@@ -1,42 +1,29 @@
 package teamkunle.co.uk.carouselview.carousel;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import javax.inject.Inject;
+import android.support.v7.app.AppCompatActivity;
 
 import teamkunle.co.uk.carouselview.R;
-import teamkunle.co.uk.carouselview.carousel.injection.CarouselComponent;
-import teamkunle.co.uk.carouselview.carousel.injection.CarouselModel;
-import teamkunle.co.uk.carouselview.carousel.injection.DaggerCarouselComponent;
-import teamkunle.co.uk.carouselview.carousel.presenter.CarouselPresenterImpl;
-import teamkunle.co.uk.carouselview.carousel.view.CarouselView;
 
-public class CarouselActivity extends AppCompatActivity implements CarouselView{
+public class CarouselActivity extends AppCompatActivity {
 
-    @Inject
-    CarouselPresenterImpl carouselPresenter;
-
-    private CarouselComponent carouselComponent;
+    private static final String CAROUSEL_FRAGMENT = "CAROUSEL_FRAGMENT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carousel);
-        initComponent();
-    }
-
-    private void initComponent() {
-        carouselComponent = DaggerCarouselComponent.builder()
-                .carouselModel(new CarouselModel())
-                .build();
-        carouselComponent.inject(this);
-        carouselPresenter.attachView(this);
+        attachFragment();
     }
 
     @Override
     protected void onDestroy() {
-        carouselPresenter.detachView();
         super.onDestroy();
+    }
+
+    private void attachFragment(){
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.carousel_frame_layout, CarouselFragment.newInstance(), CAROUSEL_FRAGMENT).commit();
     }
 }

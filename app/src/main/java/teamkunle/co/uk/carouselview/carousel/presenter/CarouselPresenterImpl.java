@@ -1,6 +1,8 @@
 package teamkunle.co.uk.carouselview.carousel.presenter;
 
 
+import android.support.annotation.Nullable;
+
 import teamkunle.co.uk.carouselview.carousel.view.CarouselView;
 
 public class CarouselPresenterImpl implements CarouselPresenter<CarouselView> {
@@ -20,9 +22,10 @@ public class CarouselPresenterImpl implements CarouselPresenter<CarouselView> {
         this.carouselView = carouselView;
     }
 
-    private CarouselView getView() throws Exception {
+    @Nullable
+    private CarouselView getView()  {
         if (carouselView == null) {
-            throw new Exception("View Cannot be null");
+            throw new IllegalStateException("view not attached");
         } else {
             return carouselView;
         }
