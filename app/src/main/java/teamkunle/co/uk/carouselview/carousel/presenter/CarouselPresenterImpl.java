@@ -22,6 +22,11 @@ public class CarouselPresenterImpl implements CarouselPresenter<CarouselView> {
         this.carouselView = carouselView;
     }
 
+    @Override
+    public void drawViewList() {
+        getView().setUpRecyclerView();
+    }
+
     @Nullable
     private CarouselView getView()  {
         if (carouselView == null) {

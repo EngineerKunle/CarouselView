@@ -6,4 +6,5 @@ public interface CarouselPresenter <T extends CarouselView> {
 
     void detachView();
     void attachView(CarouselView carouselView);
+    void drawViewList();
 }

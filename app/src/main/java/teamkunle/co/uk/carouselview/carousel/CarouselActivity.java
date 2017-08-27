@@ -22,7 +22,7 @@ public class CarouselActivity extends AppCompatActivity {
     }
 
     private void attachFragment(){
-        getFragmentManager()
+        getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.carousel_frame_layout, CarouselFragment.newInstance(), CAROUSEL_FRAGMENT).commit();
     }
