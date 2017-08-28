@@ -75,12 +75,13 @@ public class CarouselFragment extends Fragment implements CarouselView {
 
     @Override
     public void setUpRecyclerView() {
-        newsList.add(new CarouselNewsModel("Liverpool Beat Arsenal", "Kunle Ogunjimi"));
-        newsList.add(new CarouselNewsModel("Transfer Rumours", "Kunle Ogunjimi"));
-        newsList.add(new CarouselNewsModel("Liverpool sign defender", "Kunle Ogunjimi"));
+        newsList.add(new CarouselNewsModel("Liverpool Beat Arsenal", "John Smith"));
+        newsList.add(new CarouselNewsModel("Transfer Rumours", "Bobby Jackson"));
+        newsList.add(new CarouselNewsModel("Liverpool sign defender", "Chris Ace"));
 
         CarouselAdapter adapter = new CarouselAdapter(newsList);
         rVNews.setAdapter(adapter);
+        layoutManager.setStackFromEnd(true);
         rVNews.setLayoutManager(layoutManager);
     }
 
